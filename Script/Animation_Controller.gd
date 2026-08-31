@@ -7,6 +7,5 @@ extends AnimatedSprite2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	play(GlobalVars.p1state)
-	#print(frame)
-	GlobalVars.P1frame = frame 
+	GlobalVars.P1frame = frame
 	pass

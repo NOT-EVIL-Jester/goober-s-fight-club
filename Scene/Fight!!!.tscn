@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://brcwrpqyy31yi" path="res://Sprites/icon.svg" id="2_sbp1q"]
 [ext_resource type="PackedScene" uid="uid://cntiuaull7pdu" path="res://Scene/Character.tscn" id="3_sh4ps"]
 [ext_resource type="Script" uid="uid://b0qmym1ws501m" path="res://Script/area_2d_2.gd" id="4_alsvh"]
+[ext_resource type="Script" uid="uid://biarxkj3yc3v4" path="res://Scene/dummy.gd" id="4_talgt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sh4ps"]
 texture = ExtResource("2_sbp1q")
@@ -142,6 +143,12 @@ sources/0 = SubResource("TileSetAtlasSource_sh4ps")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o16gi"]
 size = Vector2(84, 69)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xekcp"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gllrq"]
+size = Vector2(128, 128)
+
 [node name="Node2D" type="Node2D" unique_id=717953892]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=181593486]
@@ -152,18 +159,37 @@ tile_set = SubResource("TileSet_gllrq")
 collision_layer = 5
 collision_mask = 5
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1152957039]
+position = Vector2(629, 236)
+zoom = Vector2(0.8, 0.8)
+position_smoothing_enabled = true
+
 [node name="P2Hitbox" type="Area2D" parent="." unique_id=75903464]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("4_alsvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P2Hitbox" unique_id=1652504124]
-position = Vector2(581, 436)
+position = Vector2(509, 420)
 shape = SubResource("RectangleShape2D_o16gi")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1152957039]
-position = Vector2(629, 236)
-zoom = Vector2(0.8, 0.8)
-position_smoothing_enabled = true
+[node name="Dummy" type="CharacterBody2D" parent="." unique_id=351767327]
+position = Vector2(901, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("4_talgt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dummy" unique_id=2070190864]
+texture = ExtResource("2_sbp1q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy" unique_id=907564299]
+shape = SubResource("RectangleShape2D_xekcp")
+
+[node name="Area2D" type="Area2D" parent="Dummy" unique_id=1300992613]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy/Area2D" unique_id=245302060]
+shape = SubResource("RectangleShape2D_gllrq")
 
 [connection signal="area_entered" from="P2Hitbox" to="GOOBY" method="_on_p_2_hitbox_area_entered"]

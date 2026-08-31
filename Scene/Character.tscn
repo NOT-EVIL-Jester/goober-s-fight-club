@@ -154,10 +154,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vctgx")
 }, {
-"duration": 4.0,
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1udl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1udl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1udl")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_x1udl")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Jab",
 "speed": 10.0
 }, {
@@ -191,6 +200,8 @@ size = Vector2(90, 70)
 script = ExtResource("1_r8pwl")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=671778074]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1008323190]
 position = Vector2(0, 16)
@@ -205,8 +216,9 @@ shape = SubResource("RectangleShape2D_v07kv")
 position = Vector2(4, -32)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nevaf")
-animation = &"Idle"
-frame_progress = 0.216158
+animation = &"Jab"
+frame = 8
+frame_progress = 1.0
 script = ExtResource("15_sqymt")
 
 [node name="Jump Timer" type="Timer" parent="." unique_id=1698850686]
@@ -228,7 +240,14 @@ debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="SFX_jump" type="AudioStreamPlayer" parent="." unique_id=1846188877]
 stream = ExtResource("17_8t1rr")
-volume_db = -5.506
+volume_db = -80.0
+
+[node name="Hitbox Timer" type="Timer" parent="." unique_id=1673008099]
+
+[node name="Endlag" type="Timer" parent="." unique_id=269625794]
 
 [connection signal="timeout" from="Jump Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="P1Hitbox" to="." method="_on_p_1_hitbox_area_entered"]
 [connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Hitbox Timer" to="." method="_on_hitbox_timer_timeout"]
+[connection signal="timeout" from="Endlag" to="." method="_on_endlag_timeout"]
