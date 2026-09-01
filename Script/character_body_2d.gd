@@ -163,7 +163,7 @@ func _on_p_2_hitbox_area_entered(area: Area2D) -> void:
 	
 
 # attack funky town
-# NTS: YOU COULD MAKE THIS MODULAR
+# NTS: If your attack has some special function just make it its own function, we at attack funky town don't want it 
 
 func goobyattack(Index):
 	$P1Hitbox.monitoring == false 

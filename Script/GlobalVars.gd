@@ -9,6 +9,13 @@ var Damage2: float = 10
 var P1DDirection: Vector2 = Vector2(1, 0)
 var P2DDirection: Vector2 = Vector2(0.8, -0.6)
 var p1state: String
+# IMPORTANT TO ADD FOR COMBOS TO WORK
+var p1hitstun: float
+var p2hitstun: float
+# IMPORTANT TO ADD FOR KILLING MOVES
+var p1scale: float
+var p2scale: float
+# IMPORANT TO ADD FOR for uhhh just important.
 @onready var attack_timer: Timer = $"Attack Timer"
 @onready var p_1_hitbox: Area2D = $P1Hitbox
 #0.99

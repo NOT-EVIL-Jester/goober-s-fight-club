@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Goober's fight club"
-run/main_scene="uid://dqmeq5q4twgo"
+run/main_scene="uid://82wg632peudu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://Sprites/icon.svg"
 
