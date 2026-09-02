@@ -19,23 +19,24 @@ var addedvel: Vector2 = Vector2(0,0)
 ## NTS: If your attack has some special function just make it its own function, we at attack funky town don't want it 
 #
 func goobyattack(Index):
-	p_1_hitbox.monitoring == false 
-	GlobalVars.p1state = GlobalVars.Goobyattacks[(2 + (Index - 1) * 9) - 1]
-	GlobalVars.Damage1 = GlobalVars.Goobyattacks[(7 + (Index - 1) * 9) - 1]
-	GlobalVars.P1DDirection = GlobalVars.Goobyattacks[(8 + (Index - 1) * 9) - 1]
-	GlobalVars.P1DDirection.x *= statemachine.facing
-	collision_shape_2d.position = GlobalVars.Goobyattacks[(5 + (Index - 1) * 9) - 1]
-	collision_shape_2d.shape.extents = GlobalVars.Goobyattacks[(6 + (Index - 1) * 9) - 1]/2
-	attack_timer.wait_time = GlobalVars.Goobyattacks[(9 + (Index - 1) * 9) - 1]
-	hitbox_timer.wait_time = GlobalVars.Goobyattacks[((3 + (Index - 1) * 9) - 1)]/10
-	endlag.wait_time = GlobalVars.Goobyattacks[((4 + (Index - 1) * 9) - 1)]
-	
-	print("attack timer started")
-	attack_timer.start()
-	hitbox_timer.start()
-	statemachine.canattack = false
-	statemachine.isattacking = true
-	statemachine.frozen = true
+	if not statemachine.stunned:
+		p_1_hitbox.monitoring == false 
+		GlobalVars.p1state = GlobalVars.Goobyattacks[(2 + (Index - 1) * 9) - 1]
+		GlobalVars.Damage1 = GlobalVars.Goobyattacks[(7 + (Index - 1) * 9) - 1]
+		GlobalVars.P1DDirection = GlobalVars.Goobyattacks[(8 + (Index - 1) * 9) - 1]
+		GlobalVars.P1DDirection.x *= statemachine.facing
+		collision_shape_2d.position = GlobalVars.Goobyattacks[(5 + (Index - 1) * 9) - 1]
+		collision_shape_2d.shape.extents = GlobalVars.Goobyattacks[(6 + (Index - 1) * 9) - 1]/2
+		attack_timer.wait_time = GlobalVars.Goobyattacks[(9 + (Index - 1) * 9) - 1]
+		hitbox_timer.wait_time = GlobalVars.Goobyattacks[((3 + (Index - 1) * 9) - 1)]/10
+		endlag.wait_time = GlobalVars.Goobyattacks[((4 + (Index - 1) * 9) - 1)]
+		
+		print("attack timer started")
+		attack_timer.start()
+		hitbox_timer.start()
+		statemachine.canattack = false
+		statemachine.isattacking = true
+		statemachine.frozen = true
 
 func _on_attack_timer_timeout() -> void:
 	print("Attack ended")

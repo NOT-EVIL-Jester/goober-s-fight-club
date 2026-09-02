@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cntiuaull7pdu"]
 
-[ext_resource type="Script" uid="uid://uvsk4rmhyu" path="res://Script/character_body_2d.gd" id="1_r8pwl"]
-[ext_resource type="Script" uid="uid://qmouyr82abdu" path="res://Scene/movementmachine.gd" id="2_65lo7"]
-[ext_resource type="Script" uid="uid://dyf46sjlaaehe" path="res://Scene/statemachine.gd" id="2_jm7yx"]
-[ext_resource type="Script" uid="uid://iu7airjfjt6" path="res://Scene/box_controller.gd" id="3_65lo7"]
+[ext_resource type="Script" uid="uid://uvsk4rmhyu" path="res://Script/Characterbase.gd" id="1_r8pwl"]
+[ext_resource type="Script" uid="uid://qmouyr82abdu" path="res://Script/movementmachine.gd" id="2_65lo7"]
+[ext_resource type="Script" uid="uid://dyf46sjlaaehe" path="res://Script/statemachine.gd" id="2_jm7yx"]
+[ext_resource type="Script" uid="uid://iu7airjfjt6" path="res://Script/box_controller.gd" id="3_65lo7"]
 [ext_resource type="Texture2D" uid="uid://dup2qrlnvx4q3" path="res://Sprites/Gooby/Goobyremodel.png" id="6_65lo7"]
 [ext_resource type="Texture2D" uid="uid://kkksbn3b3w2m" path="res://Sprites/Gooby/Goobyjab.png" id="12_82mwa"]
 [ext_resource type="Script" uid="uid://1dticgkctywf" path="res://Script/Animation_Controller.gd" id="15_sqymt"]
@@ -223,8 +223,7 @@ shape = SubResource("RectangleShape2D_v07kv")
 position = Vector2(4, -32)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nevaf")
-animation = &"Jump"
-frame_progress = 0.94357216
+animation = &"Walking"
 script = ExtResource("15_sqymt")
 
 [node name="SFX_jump" type="AudioStreamPlayer" parent="." unique_id=1846188877]

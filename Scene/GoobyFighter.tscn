@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://bkvx88d5n4e7g"]
+
+[ext_resource type="PackedScene" uid="uid://cntiuaull7pdu" path="res://Scene/CharacterBase.tscn" id="1_rgu50"]
+[ext_resource type="Texture2D" uid="uid://dup2qrlnvx4q3" path="res://Sprites/Gooby/Goobyremodel.png" id="2_n6hid"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei0lb"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3x57"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm7yx"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65lo7"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5ih6"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixtvg"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02fuw"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82mwa"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cei3j"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(768, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1hh4"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(896, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pyi6"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb4s1"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwrlt"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(640, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spbcx"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(768, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tuw4"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(896, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwo3y"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(1024, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm7eu"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1os5"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm7o1"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xunl"]
+atlas = ExtResource("2_n6hid")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7aak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei0lb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3x57")
+}],
+"loop": 1,
+"name": &"Air",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_jm7yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65lo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5ih6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ixtvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02fuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixtvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82mwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cei3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1hh4")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pyi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb4s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwrlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spbcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tuw4")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_hwo3y")
+}],
+"loop": 0,
+"name": &"Jab",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm7eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1os5")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm7o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xunl")
+}],
+"loop": 1,
+"name": &"Walking",
+"speed": 10.0
+}]
+
+[node name="GOOBY" unique_id=706398534 instance=ExtResource("1_rgu50")]
+
+[node name="Sprite" parent="." index="4" unique_id=879158272]
+sprite_frames = SubResource("SpriteFrames_w7aak")
+animation = &"Jab"

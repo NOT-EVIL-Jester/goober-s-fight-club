@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if gooby.velocity.x < 0:
 		if facing == 1:
@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 			# and here
 		facing = 1
 	
+	print(gooby.is_on_floor())
 	
 	if canattack:
 		if not gooby.is_on_floor():
@@ -34,7 +35,7 @@ func _process(delta: float) -> void:
 				GlobalVars.p1state = "Jump"
 			else:
 				GlobalVars.p1state = "Air"
-		elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		elif gooby.velocity.x != 0:
 			GlobalVars.p1state = "Walking"
 		else:
 			GlobalVars.p1state = "Idle"
@@ -44,7 +45,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("basic"):
 			#print("pressed attack")
 			if gooby.is_on_floor():
-				#print("is on floor")
+				print("is on floor")
 				if Input.is_action_pressed("up"):
 					print("uptilt")
 				elif Input.is_action_pressed("down"):

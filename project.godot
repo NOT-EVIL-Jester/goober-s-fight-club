@@ -14,6 +14,8 @@ config/name="Goober's fight club"
 run/main_scene="uid://82wg632peudu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://Sprites/icon.svg"
+boot_splash/main_scene="uid://dqmeq5q4twgo"
+boot_splash/size/borderless=false
 
 [autoload]
 
