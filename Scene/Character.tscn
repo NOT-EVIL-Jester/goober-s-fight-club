@@ -217,7 +217,7 @@ position = Vector2(4, -32)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nevaf")
 animation = &"Jump"
-frame_progress = 0.59425205
+frame_progress = 0.08584033
 script = ExtResource("15_sqymt")
 
 [node name="Jump Timer" type="Timer" parent="." unique_id=1698850686]
@@ -245,8 +245,11 @@ volume_db = -80.0
 
 [node name="Endlag" type="Timer" parent="." unique_id=269625794]
 
+[node name="Hitstun" type="Timer" parent="." unique_id=191371174]
+
 [connection signal="timeout" from="Jump Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="P1Hitbox" to="." method="_on_p_1_hitbox_area_entered"]
 [connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Hitbox Timer" to="." method="_on_hitbox_timer_timeout"]
 [connection signal="timeout" from="Endlag" to="." method="_on_endlag_timeout"]
+[connection signal="timeout" from="Hitstun" to="." method="_on_hitstun_timeout"]

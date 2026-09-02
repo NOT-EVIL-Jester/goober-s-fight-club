@@ -17,6 +17,7 @@ var jumptime = 0.0
 var jump_buffer_timer = 0.0  # Timer for the jump buffer duration
 var last_input_direction = 0  # Stores the last horizontal input direction
 #rest of the stuff
+var stunned = false
 var addedvel: Vector2 = Vector2(0,0)
 var facing = 1
 var frozen = false
@@ -143,9 +144,9 @@ func _physics_process(delta):
 					print("upair")
 				elif Input.is_action_pressed("down"):
 					print("downair")
-				elif Input.is_action_pressed("move_right") and facing == "right" or Input.is_action_pressed("move_left") and facing == "left" :
+				elif Input.is_action_pressed("move_right") and facing == 1 or Input.is_action_pressed("move_left") and facing == -1 :
 					print("fair")
-				elif Input.is_action_pressed("move_left") and facing == "right" or Input.is_action_pressed("move_right") and facing == "left" :
+				elif Input.is_action_pressed("move_left") and facing == 1 or Input.is_action_pressed("move_right") and facing == -1 :
 					print("bair")
 				else:
 					print("nair")
@@ -157,7 +158,8 @@ func _on_p_2_hitbox_area_entered(area: Area2D) -> void:
 	frozen = false
 	GlobalVars.P1P += GlobalVars.Damage2
 	addedvel = GlobalVars.P2DDirection * (GlobalVars.P1P) 
-	velocity = addedvel*GlobalVars.Damage2
+	velocity = addedvel*GlobalVars.p2knockback
+	$Hitstun.wait_time = GlobalVars.p2hitstun
 	print(addedvel)
 	print(GlobalVars.P1P)
 	
@@ -176,6 +178,7 @@ func goobyattack(Index):
 	$"Attack Timer".wait_time = GlobalVars.Goobyattacks[(9 + (Index - 1) * 9) - 1]
 	$"Hitbox Timer".wait_time = GlobalVars.Goobyattacks[((3 + (Index - 1) * 9) - 1)]/10
 	$Endlag.wait_time = GlobalVars.Goobyattacks[((4 + (Index - 1) * 9) - 1)]
+	
 	print("attack timer started")
 	$"Attack Timer".start()
 	$"Hitbox Timer".start()
@@ -214,3 +217,7 @@ func _on_endlag_timeout() -> void:
 func _on_p_1_hitbox_area_entered(area: Area2D) -> void:
 	emit_signal("hit")
 	print("gottem")
+
+
+func _on_hitstun_timeout() -> void:
+	stunned = false
