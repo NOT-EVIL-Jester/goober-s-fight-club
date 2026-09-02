@@ -1,5 +1,4 @@
 extends Node
-var movedata := preload("res://Moves.txt")
 var P1Char: String
 var P2Char: String
 var P1P: float

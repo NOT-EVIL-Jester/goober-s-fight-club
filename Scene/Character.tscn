@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://cntiuaull7pdu"]
 
 [ext_resource type="Script" uid="uid://uvsk4rmhyu" path="res://Script/character_body_2d.gd" id="1_r8pwl"]
+[ext_resource type="Script" uid="uid://qmouyr82abdu" path="res://Scene/movementmachine.gd" id="2_65lo7"]
+[ext_resource type="Script" uid="uid://dyf46sjlaaehe" path="res://Scene/statemachine.gd" id="2_jm7yx"]
+[ext_resource type="Script" uid="uid://iu7airjfjt6" path="res://Scene/box_controller.gd" id="3_65lo7"]
 [ext_resource type="Texture2D" uid="uid://dup2qrlnvx4q3" path="res://Sprites/Gooby/Goobyremodel.png" id="6_65lo7"]
 [ext_resource type="Texture2D" uid="uid://kkksbn3b3w2m" path="res://Sprites/Gooby/Goobyjab.png" id="12_82mwa"]
 [ext_resource type="Script" uid="uid://1dticgkctywf" path="res://Script/Animation_Controller.gd" id="15_sqymt"]
 [ext_resource type="Script" uid="uid://cyvq2dmcmc34s" path="res://Script/area_2d.gd" id="16_x2qq5"]
 [ext_resource type="AudioStream" uid="uid://brx1uroyyowlx" path="res://Sound/Woosh.mp3" id="17_8t1rr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gllrq"]
-size = Vector2(96, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v07kv"]
 size = Vector2(14.999998, 19.6875)
@@ -196,16 +196,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t1rr"]
 size = Vector2(90, 70)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gllrq"]
+size = Vector2(96, 126)
+
 [node name="GOOBY" type="CharacterBody2D" unique_id=706398534]
 script = ExtResource("1_r8pwl")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=671778074]
-collision_layer = 4
-collision_mask = 0
+[node name="Movementmachine" type="Node" parent="." unique_id=644235119]
+script = ExtResource("2_65lo7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1008323190]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_gllrq")
+[node name="Jump Timer" type="Timer" parent="Movementmachine" unique_id=1698850686]
+wait_time = 0.5
+
+[node name="Statemachine" type="Node" parent="." unique_id=1636489208]
+script = ExtResource("2_jm7yx")
+
+[node name="BoxController" type="Node" parent="." unique_id=946953259]
+script = ExtResource("3_65lo7")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1688246401]
 position = Vector2(-9.536743e-07, 1.0000057)
@@ -217,11 +224,12 @@ position = Vector2(4, -32)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nevaf")
 animation = &"Jump"
-frame_progress = 0.08584033
+frame_progress = 0.94357216
 script = ExtResource("15_sqymt")
 
-[node name="Jump Timer" type="Timer" parent="." unique_id=1698850686]
-wait_time = 0.5
+[node name="SFX_jump" type="AudioStreamPlayer" parent="." unique_id=1846188877]
+stream = ExtResource("17_8t1rr")
+volume_db = -80.0
 
 [node name="P1Hitbox" type="Area2D" parent="." unique_id=1473211724]
 position = Vector2(4, -32)
@@ -235,11 +243,15 @@ script = ExtResource("16_x2qq5")
 shape = SubResource("RectangleShape2D_8t1rr")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="Attack Timer" type="Timer" parent="." unique_id=1831170554]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=671778074]
+collision_layer = 4
+collision_mask = 4
 
-[node name="SFX_jump" type="AudioStreamPlayer" parent="." unique_id=1846188877]
-stream = ExtResource("17_8t1rr")
-volume_db = -80.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1008323190]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gllrq")
+
+[node name="Attack Timer" type="Timer" parent="." unique_id=1831170554]
 
 [node name="Hitbox Timer" type="Timer" parent="." unique_id=1673008099]
 
@@ -247,9 +259,10 @@ volume_db = -80.0
 
 [node name="Hitstun" type="Timer" parent="." unique_id=191371174]
 
-[connection signal="timeout" from="Jump Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="P1Hitbox" to="." method="_on_p_1_hitbox_area_entered"]
-[connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="Hitbox Timer" to="." method="_on_hitbox_timer_timeout"]
-[connection signal="timeout" from="Endlag" to="." method="_on_endlag_timeout"]
-[connection signal="timeout" from="Hitstun" to="." method="_on_hitstun_timeout"]
+[connection signal="timeout" from="Movementmachine/Jump Timer" to="Statemachine" method="_on_jump_timer_timeout"]
+[connection signal="area_entered" from="P1Hitbox" to="BoxController" method="_on_p_1_hitbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="BoxController" method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Attack Timer" to="BoxController" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Hitbox Timer" to="BoxController" method="_on_hitbox_timer_timeout"]
+[connection signal="timeout" from="Endlag" to="BoxController" method="_on_endlag_timeout"]
+[connection signal="timeout" from="Hitstun" to="BoxController" method="_on_hitstun_timeout"]

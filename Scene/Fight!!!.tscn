@@ -165,13 +165,14 @@ zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 
 [node name="P2Hitbox" type="Area2D" parent="." unique_id=75903464]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("4_alsvh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P2Hitbox" unique_id=1652504124]
-position = Vector2(509, 420)
+position = Vector2(810, 281)
 shape = SubResource("RectangleShape2D_o16gi")
+debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Dummy" type="CharacterBody2D" parent="." unique_id=351767327]
 position = Vector2(901, 0)
@@ -193,3 +194,4 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_gllrq")
 
 [connection signal="area_entered" from="P2Hitbox" to="GOOBY" method="_on_p_2_hitbox_area_entered"]
+[connection signal="area_entered" from="P2Hitbox" to="P2Hitbox" method="_on_area_entered"]
