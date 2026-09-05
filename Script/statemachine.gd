@@ -5,6 +5,8 @@ var isattacking = false
 var frozen = false
 var stunned = false
 var facing = 1
+var p1state: String
+var P1P: float = 0.0
 @onready var gooby: CharacterBody2D = $".."
 @onready var box_controller: Node = $"../BoxController"
 
@@ -14,7 +16,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if gooby.velocity.x < 0:
 		if facing == 1:
@@ -27,18 +29,17 @@ func _physics_process(delta: float) -> void:
 			# and here
 		facing = 1
 	
-	print(gooby.is_on_floor())
 	
 	if canattack:
 		if not gooby.is_on_floor():
 			if justjumped:
-				GlobalVars.p1state = "Jump"
+				p1state = "Jump"
 			else:
-				GlobalVars.p1state = "Air"
+				p1state = "Air"
 		elif gooby.velocity.x != 0:
-			GlobalVars.p1state = "Walking"
+			p1state = "Walking"
 		else:
-			GlobalVars.p1state = "Idle"
+			p1state = "Idle"
 
 	#ATTACK!!!!
 	if canattack:

@@ -175,7 +175,10 @@ animations = [{
 }]
 
 [node name="GOOBY" unique_id=706398534 instance=ExtResource("1_rgu50")]
+collision_layer = 0
 
 [node name="Sprite" parent="." index="4" unique_id=879158272]
 sprite_frames = SubResource("SpriteFrames_w7aak")
-animation = &"Jab"
+
+[node name="P1Hitbox" parent="." index="6" unique_id=1473211724]
+monitorable = false

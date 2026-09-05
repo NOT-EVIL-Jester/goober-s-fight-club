@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://dyf46sjlaaehe" path="res://Script/statemachine.gd" id="2_jm7yx"]
 [ext_resource type="Script" uid="uid://iu7airjfjt6" path="res://Script/box_controller.gd" id="3_65lo7"]
 [ext_resource type="Texture2D" uid="uid://dup2qrlnvx4q3" path="res://Sprites/Gooby/Goobyremodel.png" id="6_65lo7"]
-[ext_resource type="Texture2D" uid="uid://kkksbn3b3w2m" path="res://Sprites/Gooby/Goobyjab.png" id="12_82mwa"]
 [ext_resource type="Script" uid="uid://1dticgkctywf" path="res://Script/Animation_Controller.gd" id="15_sqymt"]
 [ext_resource type="Script" uid="uid://cyvq2dmcmc34s" path="res://Script/area_2d.gd" id="16_x2qq5"]
 [ext_resource type="AudioStream" uid="uid://brx1uroyyowlx" path="res://Sound/Woosh.mp3" id="17_8t1rr"]
@@ -52,30 +51,6 @@ region = Rect2(768, 128, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1hh4"]
 atlas = ExtResource("6_65lo7")
 region = Rect2(896, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqymt"]
-atlas = ExtResource("12_82mwa")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x2qq5"]
-atlas = ExtResource("12_82mwa")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8t1rr"]
-atlas = ExtResource("12_82mwa")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_380vh"]
-atlas = ExtResource("12_82mwa")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vctgx"]
-atlas = ExtResource("12_82mwa")
-region = Rect2(512, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x1udl"]
-atlas = ExtResource("12_82mwa")
-region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nm7eu"]
 atlas = ExtResource("6_65lo7")
@@ -138,34 +113,7 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqymt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x2qq5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8t1rr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_380vh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vctgx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1udl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1udl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1udl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x1udl")
-}],
+"frames": [],
 "loop": 0,
 "name": &"Jab",
 "speed": 10.0
@@ -223,7 +171,7 @@ shape = SubResource("RectangleShape2D_v07kv")
 position = Vector2(4, -32)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nevaf")
-animation = &"Walking"
+animation = &"Jab"
 script = ExtResource("15_sqymt")
 
 [node name="SFX_jump" type="AudioStreamPlayer" parent="." unique_id=1846188877]
@@ -233,8 +181,8 @@ volume_db = -80.0
 [node name="P1Hitbox" type="Area2D" parent="." unique_id=1473211724]
 position = Vector2(4, -32)
 scale = Vector2(1.5, 1.5)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 monitoring = false
 script = ExtResource("16_x2qq5")
 
@@ -243,12 +191,13 @@ shape = SubResource("RectangleShape2D_8t1rr")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=671778074]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1008323190]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_gllrq")
+debug_color = Color(0, 0.6506481, 0.09858621, 0.41960785)
 
 [node name="Attack Timer" type="Timer" parent="." unique_id=1831170554]
 
@@ -259,6 +208,8 @@ shape = SubResource("RectangleShape2D_gllrq")
 [node name="Hitstun" type="Timer" parent="." unique_id=191371174]
 
 [connection signal="timeout" from="Movementmachine/Jump Timer" to="Statemachine" method="_on_jump_timer_timeout"]
+[connection signal="p1hit" from="BoxController" to="BoxController" method="_on_p_1_hit"]
+[connection signal="p2hit" from="BoxController" to="BoxController" method="_on_p_2_hit"]
 [connection signal="area_entered" from="P1Hitbox" to="BoxController" method="_on_p_1_hitbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="BoxController" method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Attack Timer" to="BoxController" method="_on_attack_timer_timeout"]

@@ -1,41 +1,7 @@
 [gd_scene format=3 uid="uid://cbw1fb3vfla7s"]
 
-[ext_resource type="Texture2D" uid="uid://fp53nb04akhe" path="res://Sprites/Gooby/Goobyfall.png" id="1_as1vj"]
 [ext_resource type="Texture2D" uid="uid://dup2qrlnvx4q3" path="res://Sprites/Gooby/Goobyremodel.png" id="2_l8lqv"]
-[ext_resource type="Texture2D" uid="uid://bcqwoba12wbd3" path="res://Sprites/Gooby/GoobyJump.png" id="11_nswta"]
 [ext_resource type="Script" uid="uid://1dticgkctywf" path="res://Script/Animation_Controller.gd" id="14_yofaj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y3x57"]
-atlas = ExtResource("1_as1vj")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1os5"]
-atlas = ExtResource("1_as1vj")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yi1f5"]
-load_path = "res://.godot/imported/Goobyidle3.png-c58f68649d6a0f5db889261d75ebcbd5.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_htula"]
-load_path = "res://.godot/imported/Goobyidle4.png-7b7391e5b0edf5bbb4f78012ba352768.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v83pl"]
-load_path = "res://.godot/imported/Goobyidle5.png-c09633c7533a503b49f3f68da671b0cf.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d1m2b"]
-load_path = "res://.godot/imported/Goobyidle6.png-f6d0e129a66b3cd29bd4103cfb4ee6f0.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bafv8"]
-load_path = "res://.godot/imported/Goobyidle7.png-2e6dd5a36a352a8e6abd6c6744327468.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h225i"]
-load_path = "res://.godot/imported/Goobyidle8.png-9bf31114959aa7ddaea62d47295d3474.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8vkxo"]
-load_path = "res://.godot/imported/Goobyidle9.png-dd8d4fa960e2d53933a12f20475f2cd9.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ma608"]
-load_path = "res://.godot/imported/Goobyidle10.png-80f2e189036ef95cdd30eda1b04dcf98.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7avpo"]
 atlas = ExtResource("2_l8lqv")
@@ -61,62 +27,8 @@ region = Rect2(896, 256, 128, 128)
 atlas = ExtResource("2_l8lqv")
 region = Rect2(1024, 256, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4jrfd"]
-atlas = ExtResource("11_nswta")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pslb"]
-atlas = ExtResource("11_nswta")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j0o14"]
-load_path = "res://.godot/imported/Goobywalk1.png-c3921cb7ceafae23f2e81d0604285f32.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8phct"]
-load_path = "res://.godot/imported/Goobywalk2.png-019196730c3c890b903f9447fd83652d.ctex"
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_dpt1e"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y3x57")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k1os5")
-}],
-"loop": 1,
-"name": &"Air",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_yi1f5")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_htula")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_v83pl")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_d1m2b")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_bafv8")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_h225i")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_8vkxo")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_ma608")
-}],
-"loop": 1,
-"name": &"Idle",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7avpo")
@@ -139,28 +51,6 @@ animations = [{
 "loop": 1,
 "name": &"Jab",
 "speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4jrfd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1pslb")
-}],
-"loop": 1,
-"name": &"Jump",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_j0o14")
-}, {
-"duration": 1.0,
-"texture": SubResource("CompressedTexture2D_8phct")
-}],
-"loop": 1,
-"name": &"Walking",
-"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xekcp"]
@@ -173,8 +63,6 @@ position = Vector2(-31, -83)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_dpt1e")
 animation = &"Jab"
-frame = 4
-frame_progress = 0.8567716
 script = ExtResource("14_yofaj")
 
 [node name="Area2D" type="Area2D" parent="Refence" unique_id=1735617089]

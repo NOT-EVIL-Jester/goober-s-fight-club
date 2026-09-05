@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 var paddedvel = Vector2(0,0)
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -24,9 +23,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(" erm oof ouch")
-	GlobalVars.P2P += GlobalVars.Damage1
-	paddedvel = GlobalVars.P1DDirection * (GlobalVars.P2P) 
-	velocity = paddedvel*GlobalVars.Damage1
-	velocity = paddedvel
-	pass # Replace with function body.
+	print("help")
+	pass
